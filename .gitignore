@@ -10,7 +10,11 @@ frontend/node_modules/
 # Python
 __pycache__
 backend/venv
+backend/db.sqlite
+backend/__pycache__
 *.pyc
 
 # macOs
 .DS_Store
+
+.idea
