@@ -5,12 +5,14 @@ export default {
       mode: 'login'
     })
   },
+
   async register (context, payload) {
     return context.dispatch('auth', {
       ...payload,
       mode: 'register'
     })
   },
+
   async auth (context, payload) {
     const mode = payload.mode
     let url = 'http://127.0.0.1:5000/api/login'
@@ -44,6 +46,7 @@ export default {
       refreshToken: responseData.refresh_token
     })
   },
+
   autoLogin (context) {
     const accessToken = localStorage.getItem('token')
     const username = localStorage.getItem('username')
@@ -56,6 +59,7 @@ export default {
       })
     }
   },
+
   logout (context) {
     context.commit('setUser', {
       username: null,

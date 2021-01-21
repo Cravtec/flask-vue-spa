@@ -1,6 +1,7 @@
 from backend import db
 from passlib.hash import pbkdf2_sha256 as sha256
 from datetime import datetime
+from sqlalchemy import desc
 
 
 class User(db.Model):
@@ -37,3 +38,12 @@ class Audit(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+    
+    @classmethod
+    def get_all(cls):
+        def to_json(x):
+            return {
+                'username': x.username,
+                'last_login': str(x.last_login.strftime('%d-%m-%Y %H:%M:%S'))
+            }
+        return {'users': list(map(lambda x: to_json(x), Audit.query.order_by(desc(Audit.last_login)).all()))}

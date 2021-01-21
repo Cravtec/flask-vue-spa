@@ -71,12 +71,12 @@ class TokenRefresh(Resource):
         return {'message': 'Token refresh'}
 
 
-class AllUsers(Resource):
+class AuditCheck(Resource):
     def get(self):
-        return User.return_all()
+        return Audit.get_all()
 
     def delete(self):
-        return User.delete_all()
+        return Audit.delete_all()
 
 
 class SecretResource(Resource):
