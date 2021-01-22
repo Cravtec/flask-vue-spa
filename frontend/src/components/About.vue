@@ -58,7 +58,7 @@ export default {
 #audits {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  margin: auto;
 }
 
 #audits td, #audits th {

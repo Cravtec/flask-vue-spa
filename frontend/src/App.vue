@@ -36,8 +36,8 @@ export default {
 </script>
 
 <style>
-div.nav{
-  margin: 0;
+body {
+    margin: 0px;
 }
 
 #app {
@@ -73,4 +73,5 @@ li a {
 li a:hover {
   background-color: rgba(34, 34, 34, 0.527);
 }
+
 </style>
