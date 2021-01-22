@@ -6,13 +6,15 @@ Vue.js SPA served over Flask microframework
 * vue-router: 3.0.1
 * axios: 0.19
 
-Tutorial on how I build this app:
+Tutorial on how this app was build:
 https://medium.com/@oleg.agapov/full-stack-single-page-application-with-vue-js-and-flask-b1e036315532
 
-# added
+# Update
+Added:
 * registration
 * login
 * logout
+* user audit
 
 ## Build Setup
 

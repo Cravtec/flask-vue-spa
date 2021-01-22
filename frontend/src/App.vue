@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> 
-      <router-link to="/About" v-if="isLoggedIn">About</router-link>
-      <router-link to="/Auth" v-if="!isLoggedIn">Login</router-link>
-      <button v-if="isLoggedIn" @click='logout'>Logout</button>  
+      <ul>
+        <li><router-link to="/">Home</router-link></li>
+        <li v-if="isLoggedIn"><router-link to="/About">About</router-link></li>
+        <li v-if="!isLoggedIn"><router-link to="/Auth">Login</router-link></li>
+        <li v-if="isLoggedIn"><a @click='logout'>Logout</a> </li>
+      </ul>
     </div>
     <div>
     <img src="./assets/logo.png">
@@ -40,6 +42,31 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #35495e;
+}
+
+li {
+  float: left;
+  cursor: pointer;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgba(34, 34, 34, 0.527);
 }
 </style>

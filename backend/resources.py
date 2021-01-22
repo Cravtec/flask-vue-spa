@@ -56,31 +56,9 @@ class UserLogin(Resource):
             return {'message': 'Wrong username or password'}, 500
 
 
-class UserLogoutAccess(Resource):
-    def post(self):
-        return {'message': 'User logout'}
-
-
-class UserLogoutRefresh(Resource):
-    def post(self):
-        return {'message': 'User logout'}
-
-
-class TokenRefresh(Resource):
-    def post(self):
-        return {'message': 'Token refresh'}
-
-
 class AuditCheck(Resource):
     def get(self):
         return Audit.get_all()
 
     def delete(self):
         return Audit.delete_all()
-
-
-class SecretResource(Resource):
-    @jwt_required
-    def get(self):
-        return {
-            'answer': 42}

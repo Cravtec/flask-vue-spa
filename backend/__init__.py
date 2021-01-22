@@ -27,8 +27,8 @@ api = Api(app)
 
 jinja_options = app.jinja_options.copy()
 app.jinja_options.copy().update(dict(
-    variable_start_string='%%',
-    variable_end_string='%%',
+    variable_start_string='[[',
+    variable_end_string=']]',
 ))
 app.jinja_options = jinja_options
 

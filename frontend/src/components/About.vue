@@ -3,13 +3,17 @@
     <p>About</p>
     <div v-if="isLoggedIn">
       <p>Content is visible only for logged in users</p>
-      <table>
-      <tr><h3>Login table:</h3></tr>
+      <table id="audits">
       <tr>
+        <td colspan="3"><h3>Login table:</h3></td>
+      </tr>
+      <tr>
+        <th>Id</th>
         <th>Username</th>
         <th>last login</th>
       </tr>
-        <tr v-for="audit in auditList">
+        <tr v-for="(audit, i) in auditList">
+          <td>{{ i+1 }}</td>
           <td>{{ audit.username }}</td>
           <td>{{ audit.last_login }}</td>
         </tr>
@@ -49,3 +53,28 @@ export default {
   }
 }
 </script>
+
+<style>
+#audits {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#audits td, #audits th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#audits tr:nth-child(even){background-color: #f2f2f2;}
+
+#audits tr:hover {background-color: #ddd;}
+
+#audits th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
