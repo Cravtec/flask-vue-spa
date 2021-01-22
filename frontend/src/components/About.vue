@@ -2,15 +2,14 @@
   <div>
     <p>About</p>
     <div v-if="isLoggedIn">
-      <p>cntent visible only for:</p>
-      <p>logged in users</p>
+      <p>Content is visible only for logged in users</p>
       <table>
       <tr><h3>Login table:</h3></tr>
       <tr>
         <th>Username</th>
         <th>last login</th>
       </tr>
-        <tr v-for="audit in auditList" v-bind:key="auditList">
+        <tr v-for="audit in auditList">
           <td>{{ audit.username }}</td>
           <td>{{ audit.last_login }}</td>
         </tr>
@@ -23,14 +22,14 @@
 import axios from 'axios'
 
 export default {
+  data () {
+    return {
+      auditList: null
+    }
+  },
   computed: {
     isLoggedIn () {
       return this.$store.getters.isAuthenticated
-    }
-  },
-  data () {
-    return {
-      auditList: 0
     }
   },
   created () {

@@ -35,20 +35,21 @@ export default {
       const error = new Error(responseData.message || 'Failed to authenticate.')
       throw error
     }
+    if (mode === 'login') {
+      localStorage.setItem('username', responseData.username)
+      localStorage.setItem('accessToken', responseData.access_token)
 
-    localStorage.setItem('username', responseData.username)
-    localStorage.setItem('accessToken', responseData.access_token)
-
-    console.log(responseData)
-    context.commit('setUser', {
-      username: responseData.username,
-      accessToken: responseData.access_token,
-      refreshToken: responseData.refresh_token
-    })
+      console.log(responseData)
+      context.commit('setUser', {
+        username: responseData.username,
+        accessToken: responseData.access_token,
+        refreshToken: responseData.refresh_token
+      })
+    }
   },
 
   autoLogin (context) {
-    const accessToken = localStorage.getItem('token')
+    const accessToken = localStorage.getItem('accessToken')
     const username = localStorage.getItem('username')
 
     if (accessToken && username) {
@@ -61,6 +62,10 @@ export default {
   },
 
   logout (context) {
+    localStorage.removeItem('username')
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
+
     context.commit('setUser', {
       username: null,
       accessToken: null,

@@ -13,6 +13,12 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model.trim="password"/>
       </div>
+
+      <div class="form-cntrol" v-if="mode=='register'">
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" v-model.trim="confirm_password"/>
+      </div>
+      <p v-if="password != confirm_password && mode ==='register'">Password do not match</p>
       <p v-if="!formISValid">Enter a valid username or password(no less than 3 caraters)</p>
       <div v-show="!!error">
         <h3>An error occured</h3>
@@ -31,6 +37,7 @@ export default {
     return {
       username: '',
       password: '',
+      confirm_password: '',
       formISValid: true,
       mode: 'login',
       error: null
@@ -73,10 +80,13 @@ export default {
       try {
         if (this.mode === 'login') {
           await this.$store.dispatch('login', actionPayload)
-        } else {
+          this.$router.replace('/about')
+        } else if (this.password === this.confirm_password) {
           await this.$store.dispatch('register', actionPayload)
+          this.switchAuthMode()
+        } else {
+
         }
-        this.$router.replace('/About')
       } catch (err) {
         this.error = err.message || 'Failed to authenticate!'
       }
@@ -84,8 +94,12 @@ export default {
     switchAuthMode () {
       if (this.mode === 'login') {
         this.mode = 'register'
+        this.username = ''
+        this.password = ''
       } else {
         this.mode = 'login'
+        this.username = ''
+        this.password = ''
       }
     }
   }
