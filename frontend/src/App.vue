@@ -51,21 +51,20 @@ body {
 
 ul {
   list-style-type: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   overflow: hidden;
   background-color: #35495e;
 }
 
 li {
-  float: left;
   cursor: pointer;
+  display: inline-block;
 }
 
 li a {
   display: block;
   color: white;
-  text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
@@ -74,4 +73,8 @@ li a:hover {
   background-color: rgba(34, 34, 34, 0.527);
 }
 
+#nav {
+  margin: auto;
+  text-align: center;
+}
 </style>
